@@ -1,0 +1,115 @@
+package Functionality;
+
+import java.io.IOException;
+import java.lang.Integer;
+import java.util.Scanner;
+
+public class ExecutorModule
+{
+   public static void main(String[] args) throws IOException 
+   {
+	   showOptions();
+   }
+
+   private static void showOptions() throws IOException 
+   {
+	// TODO Auto-generated method stub
+	   
+	   while(true)
+	   {
+		        String value;
+		       Scanner sc = new Scanner(System.in);
+			   System.out.println("*************************************************************************************************************");
+			   System.out.println("************Developed By : Company Lockers Pvt. Ltd--Application Name: LockedMe.com**************************");
+			   System.out.println("*************************************************************************************************************\n");
+			   System.out.println("1.Add A File");
+			   System.out.println("2.Delete A File");
+			   System.out.println("3.Search A File");
+			   System.out.println("4.Sorting All File in Ascending Order");
+			   System.out.println("5.Close the Applicaton");
+			   System.out.println("Choose from above options:");
+			   value=sc.next();
+			   switch(value)
+			   {
+			   case "1":
+				      addAFile();
+				      break;
+			   case "2":
+				      deleteAFile();
+				      break;
+			   case "3":
+				      searchAFile();
+				      break;
+			   case "4":
+				      sortFiles();
+				      break;
+			   case "5":
+				     System.exit(0);
+			   default:
+				     System.out.println("Please choose correct option. Hit any character and then Enter To Continue");
+				     sc.next();
+				     showOptions();
+			   }
+ 
+	   }
+   }
+
+   private static void addAFile() throws IOException {
+	// TODO Auto-generated method stub
+	   innerOptions("add");
+   }
+   private static void searchAFile() throws IOException {
+		// TODO Auto-generated method stub
+	   innerOptions("search");
+   }
+   private static void deleteAFile() throws IOException {
+		// TODO Auto-generated method stub
+	   innerOptions("delete");
+   }
+   private static void sortFiles() {
+		// TODO Auto-generated method stub
+	    SortingFiles sf = new SortingFiles();
+	    sf.display();
+  }
+   private static void innerOptions(String choice) throws IOException
+   {
+	// TODO Auto-generated method stub
+	   String innerChoice;
+	   Scanner sc = new Scanner(System.in);
+	   String filename;
+	   FileOperations file = new FileOperations();
+	   if(choice=="add")
+	       System.out.println("1. Enter to add a file.");
+	   if(choice=="delete")
+	       System.out.println("1. Enter to delete a file.");
+	   if(choice=="search")
+	       System.out.println("1. Enter to search a file.");
+	   System.out.println("2. Back To Main Menu.");
+	   System.out.println("Choose from above options:");
+	   innerChoice=sc.next();
+	   if(innerChoice=="1")
+	   {
+		   System.out.println("Enter a file name:");
+		   filename= sc.next();
+		   if(choice=="add")
+			   file.createFile(filename);
+		   if(choice=="delete")
+			   file.deleteFile(filename);
+		   if(choice=="search")
+			   file.searchFile(filename);
+	   }
+	   else if(innerChoice=="2")
+	   {
+		   showOptions();
+	   }
+	   else
+	   {
+		   System.out.println("Please choose correct option. Hit any character and then enter to continue.");
+		   sc.nextInt();
+		   innerOptions(choice);
+	   }
+   }
+
+   
+   
+}
