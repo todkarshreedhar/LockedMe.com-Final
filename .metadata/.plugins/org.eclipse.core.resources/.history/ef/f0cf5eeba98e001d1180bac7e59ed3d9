@@ -87,7 +87,7 @@ public class ExecutorModule
 	   System.out.println("2. Back To Main Menu.");
 	   System.out.println("Choose from above options:");
 	   innerChoice=sc.next();
-	  
+	   System.out.println("innerChoice"+ innerChoice);
 	   if(innerChoice.equalsIgnoreCase("1"))
 	   {
 		   System.out.println("Enter a file name:");
